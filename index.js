@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const User = require('./models/User');
 const app = express();
+var cors = require('cors')
+app.use(cors());
 app.use(express.json());
 const mongoURI = 'mongodb://mongoadmin:secret@mongo:27017/test?authSource=admin';
 mongoose.connect(mongoURI, {
