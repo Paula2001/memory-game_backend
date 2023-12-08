@@ -6,6 +6,9 @@ services:
     build: .
     ports:
       - "3000:3000"
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
     links:
       - mongo
     environment:
@@ -19,7 +22,11 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - ./data/db:/data/db
+      - mongodb:/data/db
     environment:
       - MONGO_INITDB_ROOT_USERNAME=mongoadmin
       - MONGO_INITDB_ROOT_PASSWORD=secret
+
+volumes:
+  mongodb:
+  backend123:

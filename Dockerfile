@@ -4,15 +4,16 @@ FROM node:18
 # Set the working directory in the container
 WORKDIR /usr/src/app
 
-# Copy package.json and package-lock.json
-COPY package*.json ./
-
 
 # Bundle app source inside the Docker image
 COPY . .
 
 # Install any needed packages specified in package.json
 RUN npm install
+RUN npm install express
+RUN npm install -g nodemon
+
+RUN ls -ltr
 
 
 # Make port available to the world outside this container
@@ -22,4 +23,4 @@ EXPOSE 3000
 ENV NODE_ENV production
 
 # Run the app when the container launches
-ENTRYPOINT [ "npm", "run" , "serve" ]
+ENTRYPOINT [ "npm", "run", "serve" ]
